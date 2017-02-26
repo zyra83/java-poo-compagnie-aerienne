@@ -4,6 +4,11 @@ import java.util.List;
 
 public class CompagnieAerienne {
 
+	public CompagnieAerienne(String nom) {
+		super();
+		this.nom = nom;
+	}
+
 	/**
 	 * Nom de la compagnie.
 	 */

@@ -1,6 +1,7 @@
 package model.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Vol {
@@ -8,17 +9,17 @@ public class Vol {
 	/**
 	 * Date/heure de début de vol.
 	 */
-	private Date dateDebut;
+	private LocalDateTime dateDebut;
 
 	/**
 	 * Date/heure de fin du vol.
 	 */
-	private Date dateFin;
+	private LocalDateTime dateFin;
 
 	/**
 	 * @return the dateDebut
 	 */
-	public Date getDateDebut() {
+	public LocalDateTime getDateDebut() {
 		return dateDebut;
 	}
 
@@ -26,14 +27,14 @@ public class Vol {
 	 * @param dateDebut
 	 *            the dateDebut to set
 	 */
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(LocalDateTime dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
 	/**
 	 * @return the dateFin
 	 */
-	public Date getDateFin() {
+	public LocalDateTime getDateFin() {
 		return dateFin;
 	}
 
@@ -41,7 +42,7 @@ public class Vol {
 	 * @param dateFin
 	 *            the dateFin to set
 	 */
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(LocalDateTime dateFin) {
 		this.dateFin = dateFin;
 	}
 
@@ -157,5 +158,11 @@ public class Vol {
 	 */
 	public void fermerReservation() {
 		this.etatReservationVol = EtatReservationVol.FERME;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Un vol au départ de %s à destination de %s, départ le %s.", aeroportDepart.toString(),
+				aeroportArrive.toString(), dateDebut.format(DateTimeFormatter.ISO_DATE_TIME));
 	}
 }
